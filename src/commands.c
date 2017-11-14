@@ -71,6 +71,6 @@ void free_commands(int n_commands, struct single_command (*commands)[512])
 
     free(argv);
   }
+ memset((*commands), 0, sizeof(struct single_command) * n_commands);
 
-  memset((*commands), 0, sizeof(struct single_command) * n_commands);
-}
+

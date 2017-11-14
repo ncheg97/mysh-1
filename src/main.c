@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <signal.h>
 
+#include "signal_handlers.h"
 #include "commands.h"
 #include "built_in.h"
 #include "utils.h"
@@ -12,6 +14,9 @@ int main()
 
   while (1) {
     fgets(buf, 8096, stdin);
+
+	signal(SIGTSTP,sig_handler);
+	signal(SIGINT,sig_handler);
 
     struct single_command commands[512];
     int n_commands = 0;
